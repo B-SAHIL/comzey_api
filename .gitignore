@@ -1,0 +1,8 @@
+env
+.env
+**/migrations/0**.py
+**.pyc
+**/migrations/**
+comzey_api/logs/*
+comzey.pem
+comzey_api/.vscode/*

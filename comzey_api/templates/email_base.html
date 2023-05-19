@@ -1,0 +1,55 @@
+{% load i18n static %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:" en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static " admin/css/base.css" %}{% endblock %}">
+    {% block extrastyle %}{% endblock %}
+    {% if LANGUAGE_BIDI %}
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static " admin/css/rtl.css" %}{% endblock %}">
+    {% endif %}
+    {% block extrahead %}{% endblock %}
+    {% block responsive %}
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static " admin/css/responsive.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/email_base.css' %}">
+    {% endblock %}
+    {% block blockbots %}
+    <meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}" data-admin-utc-offset="{% now " Z" %}">
+
+    <!-- Container -->
+    <div id="container">
+        <h3>
+            <img class="logo-head" src="https://comezyandroidd9188d0503e4419a82be1cd838c6264c13733-dev.s3.us-east-2.amazonaws.com/public/donotdelete/svglogobuildezi.svg" alt="Build-Ezi Logo" />
+        </h3>
+
+        <!-- Content -->
+        <div id="content" class="{% block coltype %}colM{% endblock %}">
+            <p>
+                Hi {{first_name }} {{ last_name }}!
+                <br> 
+                {% block content %}
+                {% endblock %}
+            <p>
+                Thank You
+            </p>
+            <p>
+                Build-Ezi Team
+            </p>
+            </p>
+            {% block sidebar %}{% endblock %}
+            <br class="clear">
+        </div>
+        <!-- END Content -->
+    </div>
+
+    <!-- END Container -->
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+{% extends "email_base.html" %}
+{% block content %}
+<p>
+    {{message}}<br>
+    Click on following link to complete registration
+    <br>
+    <a href={{link}}>
+        {{link}}
+    </a><br>
+    <br>
+
+</p>
+{% endblock %}
